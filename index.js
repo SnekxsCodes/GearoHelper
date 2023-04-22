@@ -26,13 +26,7 @@ app.get('/api/visits/:username', (req, res) => {
 });
 
 
-app.get('/api/user/:username', (req, res) => {
-    const username = req.params.username;
-    supabase.from("users").select("*").eq("name",username).then((response)=>{
-        res.json(response.data)
-    }
-    )
-});
+
 
 app.get('/api/hello', (req, res) => {
     const message = { message: 'Hello, world!' };
