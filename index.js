@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/users/:username', (req, res) => {
+app.get('/api/visits/:username', (req, res) => {
     const username = req.params.username;
     if (!userCounts[username]) {
         userCounts[username] = 0;
