@@ -1,6 +1,8 @@
 const express = require('express');
 const {join} = require("path");
 const app = express();
+const supabase = require('./helpers/supabase')
+const {response} = require("express");
 
 app.listen(process.env.PORT || 3000);
 
@@ -23,6 +25,14 @@ app.get('/api/visits/:username', (req, res) => {
     res.json(message);
 });
 
+
+app.get('/api/user/:username', (req, res) => {
+    const username = req.params.username;
+    supabase.from("users").select("*").eq("name",username).then((response)=>{
+        res.json(response.data)
+    }
+    )
+});
 
 app.get('/api/hello', (req, res) => {
     const message = { message: 'Hello, world!' };
