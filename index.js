@@ -11,11 +11,11 @@ app.get('/', (req, res) => {
     res.sendFile('index.html', {root: join(__dirname, 'public')});
 })
 
-app.get('/hello', (req, res) => {
+
+app.get('/api/hello', (req, res) => {
     const message = { message: 'Hello, world!' };
     res.json(message);
 });
-
 
 
 module.exports = app
