@@ -5,16 +5,21 @@ const app = express();
 app.listen(process.env.PORT || 3000);
 
 app.use(express.static('public'))
-let visitCount = 0;
+let userCounts = {};
 
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', {root: join(__dirname, 'public')});
 })
 
-app.get('/api/visits', (req, res) => {
-    visitCount++;
-    const message = { visits: visitCount };
+
+app.get('/users/:username', (req, res) => {
+    const username = req.params.username;
+    if (!userCounts[username]) {
+        userCounts[username] = 0;
+    }
+    userCounts[username]++;
+    const message = { visits: userCounts[username] };
     res.json(message);
 });
 
