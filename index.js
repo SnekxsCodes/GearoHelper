@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.sendFile('index.html', {root: join(__dirname, 'public')});
 })
 
-app.get('/visits', (req, res) => {
+app.get('/api/visits', (req, res) => {
     visitCount++;
     const message = { visits: visitCount };
     res.json(message);
