@@ -1,7 +1,7 @@
 const express = require('express');
 const {join} = require("path");
 const app = express();
-const supabase = require('./helpers/supabase')
+
 const {response} = require("express");
 
 app.listen(process.env.PORT || 3000);
